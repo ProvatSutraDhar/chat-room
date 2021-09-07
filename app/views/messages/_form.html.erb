@@ -10,23 +10,13 @@
       </ul>
     </div>
   <% end %>
+  <%= form.hidden_field :room_id, value: room.id %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+  <div class="input-group mb-3 ">
+    <%= form.text_area :content, class: "form-control", placeholder:'type your message here...' %>
+    <%= form.submit "Send message", class: 'btn btn-primary' %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :room_id %>
-    <%= form.text_field :room_id %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+ <% end %>

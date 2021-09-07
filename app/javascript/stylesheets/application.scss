@@ -1,0 +1,15 @@
+.chat-room{
+  height: 100vh;
+  overflow-y: scroll;
+  chat-box{
+    position: absolute;
+    bottom: 0;
+    padding: 15px;
+    width: calc(100%-15px);
+    input[type=text]{
+      height: 45px;
+      font-size: 18px;
+      padding: 10px;
+    }
+  }
+}

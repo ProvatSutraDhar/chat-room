@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-3">
+      <p>Welcome <%=current_user.username%></p>
       <%= render 'form', room: Room.new %>
       <hr>
       <% @rooms.each do |room| %>
@@ -14,16 +15,24 @@
       <%end%>
     </div>
 
-    <div class="col-md-9">
-        <%if @room.present?%>
+    <div class="col-9">
+        <%if @room.present? %>
         <div class="chat-room">
-            <%= @room.name %>
-        </div>
-
-          <div class="chat-box">
-            <%=render 'messages/form', message: Message.new%>
+        <p><%= @room.name %></p>
+        <% @room.messages.each do |message|%>
+        <div class="message <%= 'me' if message.user == current_user%>"">
+          <div class="content">
+            <%=message.content%>
           </div>
-
+            <div class="author">
+              <%= message.user.username%>
+            </div>
+          </div>
+          <%end%>
+          <div class="chat-box">
+            <%=render 'messages/form', message: Message.new, room: @room%>
+          </div>
+        </div>
         <%end%>
     </div>
   </div>
