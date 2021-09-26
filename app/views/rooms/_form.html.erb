@@ -11,12 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group mb-3">
     <%= form.label :name, "Create new room" %>
-    <%= form.text_field :name, class:"form-control", placeholder:"Chatroom name" %>
+    <%= form.text_field :name, class:"form-control", placeholder:"Room name" %>
   </div>
-
-  <div class="actions">
-    <%= form.submit "Add room", class:"btn btn-primary" %>
-  </div>
+    <%= form.submit "Add room", class:"btn btn-outline-primary btn-block"%>
 <% end %>

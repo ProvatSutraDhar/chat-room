@@ -1,18 +1,31 @@
-<div id="room-id" data-room-id="<%=@room.try(:id)%>">
-<div id="user-id" data-user-id="<%=current_user.id%>">
+<div id="room-id" data-room-id="<%=@room.try(:id)%>"> </div>
+<div id="user-id" data-user-id="<%= current_user.id %>"> </div>
 
-</div>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-3">
-      <p>Welcome <%=current_user.username%></p>
-      <%= render 'form', room: Room.new %>
-      <hr>
-      <% @rooms.each do |room| %>
-      <%= link_to room do %>
-        <div class="card mb-2">
+    <div class="col-3 room-sidebar">
+      <div class="card no-outline">
         <div class="card-body">
-          <p><%= room.name %></p>
+          <small> Logged in as</small> <br>
+          <b><%=current_user.username%></b>
+        </div>
+      </div>
+      <hr>
+      <div class="card">
+        <div class="card-body">
+            <%=render 'rooms/form', room: Room.new %>
+        </div>
+
+      </div>
+
+
+      <% @rooms.each do |room| %>
+      <%= link_to room, class: "room-link" do %>
+      <% active_class = (@room == room) ? 'active' : ''%>
+        <div class="card no-outline mb-2 room-card <%= active_class%>">
+        <div class="card-body">
+          <span class="name"><%= room.name %></span><br>
+          <span class="members"><%= room.users.uniq.count%> Members</span>
         </div>
       </div>
       <% end %>
